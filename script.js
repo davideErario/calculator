@@ -12,7 +12,7 @@ let firstNum = 0;
 let secondArray = [];
 let secondNum = 0;
 
-let choosenOperation = "";
+let chosenOperation = "";
 
 let result = 0;
 
@@ -23,7 +23,6 @@ function writeNum() {
         firstNum = parseFloat(firstArray.join(""));
         if (isNaN(firstNum)) firstNum = 0;
         display.innerHTML = firstNum;
-        console.log(firstNum, firstArray);
     } else if (!isFirstNum) {
         receivedNum = this.dataset.num;
         secondArray.push(receivedNum);
@@ -35,11 +34,11 @@ function writeNum() {
 
 function Operations() {
     isFirstNum = !isFirstNum;
-    choosenOperation = this.dataset.op;
+    chosenOperation = this.dataset.op;
 }
 
 function Equal() {
-    result = eval(`${firstNum} ${choosenOperation} ${secondNum}`).toPrecision();
+    result = eval(`${firstNum} ${chosenOperation} ${secondNum}`).toPrecision();
     display.innerHTML = result;
     allClear();
 }
@@ -50,7 +49,7 @@ function allClear() {
     firstNum = 0;
     secondArray = [];
     secondNum = 0;
-    choosenOperation = "";
+    chosenOperation = "";
     result = 0;
 }
 
