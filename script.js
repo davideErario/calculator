@@ -17,13 +17,13 @@ let chosenOperation = "";
 let result = 0;
 
 function writeNum() {
-    if (isFirstNum) {
+    if (isFirstNum && firstArray.length <= 15) {
         receivedNum = this.dataset.num;
         firstArray.push(receivedNum);
         firstNum = parseFloat(firstArray.join(""));
         if (isNaN(firstNum)) firstNum = 0;
         display.innerHTML = firstNum;
-    } else if (!isFirstNum) {
+    } else if (!isFirstNum && secondArray.length <= 15) {
         receivedNum = this.dataset.num;
         secondArray.push(receivedNum);
         secondNum = parseFloat(secondArray.join(""));
