@@ -17,13 +17,13 @@ let chosenOperation = "";
 let result = 0;
 
 function writeNum() {
-    if (isFirstNum && firstArray.length <= 15) {
+    if (isFirstNum && firstArray.length <= 11) {
         receivedNum = this.dataset.num;
         firstArray.push(receivedNum);
         firstNum = parseFloat(firstArray.join(""));
         if (isNaN(firstNum)) firstNum = 0;
         display.innerHTML = firstNum;
-    } else if (!isFirstNum && secondArray.length <= 15) {
+    } else if (!isFirstNum && secondArray.length <= 11) {
         receivedNum = this.dataset.num;
         secondArray.push(receivedNum);
         secondNum = parseFloat(secondArray.join(""));
@@ -40,7 +40,13 @@ function Operations() {
 function Equal() {
     result = eval(`${firstNum} ${chosenOperation} ${secondNum}`).toPrecision();
     display.innerHTML = result;
-    allClear();
+    firstNum = result;
+    isFirstNum = true;
+    firstArray = [];
+    secondArray = [];
+    secondNum = 0;
+    chosenOperation = "";
+    result = 0;
 }
 
 function allClear() {
