@@ -57,6 +57,7 @@ function allClear() {
     secondNum = 0;
     chosenOperation = "";
     result = 0;
+    display.innerHTML = 0;
 }
 
 function clearEntry() {
@@ -83,3 +84,28 @@ ceBtn.addEventListener("click", clearEntry);
 numberBtns.forEach(number => { number.addEventListener("click", writeNum) });
 
 operationBtns.forEach(operation => { operation.addEventListener("click", Operations) });
+
+window.addEventListener("keydown", (e) => {
+    if (e.key >= 0 && e.key <= 9 || e.key == ".") {
+        if (isFirstNum) {
+            firstArray.push(e.key);
+            firstNum = parseFloat(firstArray.join(""));
+            if (isNaN(firstNum)) firstNum = 0;
+            display.innerHTML = firstNum;
+        } else if (!isFirstNum) {
+            secondArray.push(e.key);
+            secondNum = parseFloat(secondArray.join(""));
+            if (isNaN(secondNum)) secondNum = 0;
+            display.innerHTML = secondNum;
+        }
+    } else if (e.key == "+" || e.key == "-" || e.key == "*" || e.key == "/") {
+        isFirstNum = !isFirstNum;
+        chosenOperation = e.key;
+    } else if (e.key == "Enter") {
+        Equal();
+    } else if (e.key == "Escape") {
+        allClear();
+    } else if (e.key == "Backspace") {
+        clearEntry();
+    }
+});
