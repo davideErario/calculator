@@ -87,12 +87,12 @@ operationBtns.forEach(operation => { operation.addEventListener("click", Operati
 
 window.addEventListener("keydown", (e) => {
     if (e.key >= 0 && e.key <= 9 || e.key == ".") {
-        if (isFirstNum) {
+        if (isFirstNum && firstArray.length <= 11) {
             firstArray.push(e.key);
             firstNum = parseFloat(firstArray.join(""));
             if (isNaN(firstNum)) firstNum = 0;
             display.innerHTML = firstNum;
-        } else if (!isFirstNum) {
+        } else if (!isFirstNum && secondArray.length <= 11) {
             secondArray.push(e.key);
             secondNum = parseFloat(secondArray.join(""));
             if (isNaN(secondNum)) secondNum = 0;
